@@ -34,7 +34,7 @@ const MisAsignacionesDocente = ({
     setLoading(true);
     try {
       // Usamos la URL para obtener asignaciones directamente del backend específico
-      const response = await axios.get('http://localhost:3007/asignaciones', {
+      const response = await axios.get('http://18.222.195.94:3007/asignaciones', {
         headers: {
           'Authorization': `Bearer ${token}`
         }

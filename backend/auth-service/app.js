@@ -11,9 +11,9 @@ app.use(express.json());
 const SECRET_KEY = 'tu_clave_super_secreta';
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '123456',
+  host: 'instenglish-auth.c50qcacwip4o.us-east-2.rds.amazonaws.com',
+  user: 'admingoenglishpe',
+  password: 'Ewb-A4Q-KY2-emz',
   database: 'instenglish_auth',
   port: 3306,
 });
@@ -43,4 +43,4 @@ app.post('/login', (req, res) => {
   });
 });
 
-app.listen(3001, () => console.log('Auth Service corriendo en http://localhost:3001'));
+app.listen(3001, () => console.log('Auth Service corriendo en http://18.222.195.94:3001'));

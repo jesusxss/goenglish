@@ -90,7 +90,7 @@ function App() {
     if (!token) return;
     
     try {
-      const res = await fetch('http://localhost:3002/usuarios', {
+      const res = await fetch('http://18.222.195.94:3002/usuarios', {
         headers: { 
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -115,7 +115,7 @@ function App() {
     if (!token) return;
     
     try {
-      const res = await fetch('http://localhost:3005/materias', {
+      const res = await fetch('http://18.222.195.94:3005/materias', {
         headers: { 
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -140,7 +140,7 @@ function App() {
     if (!token) return;
     
     try {
-      const res = await fetch('http://localhost:3003/asistencias', {
+      const res = await fetch('http://18.222.195.94:3003/asistencias', {
         headers: { 
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -165,7 +165,7 @@ function App() {
     if (!token) return;
     
     try {
-      const res = await fetch('http://localhost:3007/asignaciones', {
+      const res = await fetch('http://18.222.195.94:3007/asignaciones', {
         headers: { 
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -193,7 +193,7 @@ function App() {
     setErrorAsignacionesDocente('');
     
     try {
-      const response = await fetch('http://localhost:3007/asignaciones', {
+      const response = await fetch('http://18.222.195.94:3007/asignaciones', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -227,7 +227,7 @@ function App() {
     if (!token) return;
     
     try {
-      const res = await fetch('http://localhost:3004/calificaciones', {
+      const res = await fetch('http://18.222.195.94:3004/calificaciones', {
         headers: { 
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -252,7 +252,7 @@ function App() {
   const fetchEstudiantes = useCallback(async () => {
     if (!token) return;
     try {
-      const res = await fetch('http://localhost:3002/usuarios', {
+      const res = await fetch('http://18.222.195.94:3002/usuarios', {
         headers: { 
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -275,7 +275,7 @@ function App() {
   const fetchCursosConProfesor = useCallback(async () => {
     if (!token) return;
     try {
-      const res = await fetch('http://localhost:3007/asignaciones', {
+      const res = await fetch('http://18.222.195.94:3007/asignaciones', {
         headers: { 
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -321,7 +321,7 @@ function App() {
   // Fetch cursos con profesor, capacidad y cupos disponibles desde el nuevo backend
   const fetchCursosConProfesorNuevo = useCallback(async () => {
     try {
-      const res = await fetch('http://localhost:3007/cursos-con-profesor', {
+      const res = await fetch('http://18.222.195.94:3007/cursos-con-profesor', {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -439,7 +439,7 @@ function App() {
     setLoading(true);
 
     try {
-      const res = await fetch('http://localhost:3001/login', {
+      const res = await fetch('http://18.222.195.94:3001/login', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',

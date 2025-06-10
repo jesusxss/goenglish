@@ -10,10 +10,10 @@ app.use(express.json());
 const SECRET_KEY = 'tu_clave_super_secreta';
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '123456',
-  database: 'instenglish_classes',
+  host: 'instenglish-classes.c50qcacwip4o.us-east-2.rds.amazonaws.com',
+  user: 'admingoenglishpe',
+  password: 'Ewb-A4Q-KY2-emz',
+  database: 'instenglish-classes',
   port: 3306,
 });
 
@@ -91,4 +91,4 @@ app.delete('/materias/:id', authMiddleware(['administrativo']), (req, res) => {
   });
 });
 
-app.listen(3005, () => console.log('Classes Service running on http://localhost:3005'));
+app.listen(3005, () => console.log('Classes Service running on http://18.222.195.94:3005'));

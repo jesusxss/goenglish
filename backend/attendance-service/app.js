@@ -10,9 +10,9 @@ app.use(express.json());
 const SECRET_KEY = 'tu_clave_super_secreta';
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '123456',
+  host: 'instenglish-attendance.c50qcacwip4o.us-east-2.rds.amazonaws.com',
+  user: 'admingoenglishpe',
+  password: 'Ewb-A4Q-KY2-emz',
   database: 'instenglish_attendance',
   port: 3306,
 });
@@ -110,4 +110,4 @@ app.delete('/asistencias/:id', authMiddleware(['administrativo']), (req, res) =>
   });
 });
 
-app.listen(3003, () => console.log('Attendance Service running on http://localhost:3003'));
+app.listen(3003, () => console.log('Attendance Service running on http://18.222.195.94:3003'));

@@ -41,7 +41,7 @@ const AsignacionEstudiantes = ({ usuarios, profesores, token, showError, showSuc
     setLoading(true);
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/asignaciones-estudiantes`,
+        `${process.env.REACT_APP_API_URL || 'http://18.222.195.94:5000'}/api/asignaciones-estudiantes`,
         {
           headers: { Authorization: `Bearer ${token}` }
         }
@@ -52,7 +52,7 @@ const AsignacionEstudiantes = ({ usuarios, profesores, token, showError, showSuc
         try {
           // Obtener los detalles de la asignación curso-profesor
           const detallesResponse = await axios.get(
-            `${process.env.REACT_APP_API_URL || 'http://localhost:3007'}/asignaciones/${asignacion.asignacionId}`,
+            `${process.env.REACT_APP_API_URL || 'http://18.222.195.94:3007'}/asignaciones/${asignacion.asignacionId}`,
             {
               headers: { Authorization: `Bearer ${token}` }
             }
@@ -88,7 +88,7 @@ const AsignacionEstudiantes = ({ usuarios, profesores, token, showError, showSuc
   const fetchCursosProfesores = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL || 'http://localhost:3007'}/cursos-con-profesor`,
+        `${process.env.REACT_APP_API_URL || 'http://18.222.195.94:3007'}/cursos-con-profesor`,
         {
           headers: { Authorization: `Bearer ${token}` }
         }
@@ -130,7 +130,7 @@ const AsignacionEstudiantes = ({ usuarios, profesores, token, showError, showSuc
     
     try {
       await axios.post(
-        `${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/asignaciones-estudiantes`,
+        `${process.env.REACT_APP_API_URL || 'http://18.222.195.94:5000'}/api/asignaciones-estudiantes`,
         formData,
         {
           headers: { Authorization: `Bearer ${token}` }
@@ -157,7 +157,7 @@ const AsignacionEstudiantes = ({ usuarios, profesores, token, showError, showSuc
     setLoading(true);
     try {
       await axios.delete(
-        `${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/asignaciones-estudiantes/${id}`,
+        `${process.env.REACT_APP_API_URL || 'http://18.222.195.94:5000'}/api/asignaciones-estudiantes/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` }
         }

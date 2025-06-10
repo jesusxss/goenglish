@@ -18,8 +18,8 @@ const ClasesList = ({ clases, token, fetchClases, showError, showSuccess }) => {
     setLoading(true);
     try {
       const url = editMode 
-        ? `http://localhost:3005/materias/${formData.id}`
-        : 'http://localhost:3005/materias';
+        ? `http://18.222.195.94:3005/materias/${formData.id}`
+        : 'http://18.222.195.94:3005/materias';
       
       const method = editMode ? 'PUT' : 'POST';
       
@@ -48,7 +48,7 @@ const ClasesList = ({ clases, token, fetchClases, showError, showSuccess }) => {
     if (!window.confirm('¿Estás seguro de eliminar esta clase?')) return;
     
     try {
-      const res = await fetch(`http://localhost:3005/materias/${id}`, {
+      const res = await fetch(`http://18.222.195.94:3005/materias/${id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });

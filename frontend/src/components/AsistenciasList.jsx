@@ -32,8 +32,8 @@ const AsistenciasList = ({ asistencias, usuarios, clases, token, fetchAsistencia
     setLoading(true);
     try {
       const url = editMode 
-        ? `http://localhost:3003/asistencias/${formData.id}`
-        : 'http://localhost:3003/asistencias';
+        ? `http://18.222.195.94:3003/asistencias/${formData.id}`
+        : 'http://18.222.195.94:3003/asistencias';
       
       const method = editMode ? 'PUT' : 'POST';
       
@@ -73,7 +73,7 @@ const AsistenciasList = ({ asistencias, usuarios, clases, token, fetchAsistencia
     if (!window.confirm('¿Estás seguro de eliminar esta asistencia?')) return;
     
     try {
-      const res = await fetch(`http://localhost:3003/asistencias/${id}`, {
+      const res = await fetch(`http://18.222.195.94:3003/asistencias/${id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });

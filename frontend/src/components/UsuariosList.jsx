@@ -18,8 +18,8 @@ const UsuariosList = ({ usuarios, token, fetchUsuarios, showError, showSuccess }
     setLoading(true);
     try {
       const url = editMode 
-        ? `http://localhost:3002/usuarios/${formData.id}`
-        : 'http://localhost:3002/usuarios';
+        ? `http://18.222.195.94:3002/usuarios/${formData.id}`
+        : 'http://18.222.195.94:3002/usuarios';
       
       const method = editMode ? 'PUT' : 'POST';
       
@@ -52,7 +52,7 @@ const UsuariosList = ({ usuarios, token, fetchUsuarios, showError, showSuccess }
     if (!window.confirm('¿Estás seguro de eliminar este usuario?')) return;
     
     try {
-      const res = await fetch(`http://localhost:3002/usuarios/${id}`, {
+      const res = await fetch(`http://18.222.195.94:3002/usuarios/${id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });

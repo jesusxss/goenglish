@@ -8,8 +8,8 @@ app.use(express.json());
 
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'root',
-  password: '123456',
+  user: 'admingoenglishpe',
+  password: 'Ewb-A4Q-KY2-emz',
   database: 'intenglish_estucur',
   port: 3306,
 });
@@ -98,4 +98,4 @@ app.get('/asignados/:asignacion_profesor_curso_id', (req, res) => {
   );
 });
 
-app.listen(3009, () => console.log('API de Asignaciones con JWT corriendo en http://localhost:3009'));
+app.listen(3009, () => console.log('API de Asignaciones con JWT corriendo en http://18.222.195.94:3009'));

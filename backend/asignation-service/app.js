@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 
 const app = express();
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'http://18.222.195.94:3000',
   methods: ['GET','POST','PUT','DELETE'],
   allowedHeaders: ['Content-Type','Authorization'],
   credentials: true
@@ -15,9 +15,9 @@ app.use(express.json());
 const SECRET_KEY = 'tu_clave_super_secreta';
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '123456',
+  host: 'instenglish-asignation.c50qcacwip4o.us-east-2.rds.amazonaws.com',
+  user: 'admingoenglishpe',
+  password: 'Ewb-A4Q-KY2-emz',
   database: 'instenglish_asignation',
   port: 3306,
 });
@@ -251,4 +251,4 @@ app.get('/test', (req, res) => {
 
 
 
-app.listen(3007, () => console.log('API de Asignaciones con JWT corriendo en http://localhost:3007'));
+app.listen(3007, () => console.log('API de Asignaciones con JWT corriendo en http://18.222.195.94:3007'));

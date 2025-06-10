@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const API_URL = 'http://localhost:3007/asignaciones';
-const PROFESORES_URL = 'http://localhost:3007/profesores';
+const API_URL = 'http://18.222.195.94:3007/asignaciones';
+const PROFESORES_URL = 'http://18.222.195.94:3007/profesores';
 
 // Iconos SVG personalizados
 const Icons = {
@@ -160,7 +160,7 @@ const ProfesoresAsignaturas = ({ token }) => {
   // Fetch clases/asignaturas para filtro
   const fetchClases = async () => {
     try {
-      const res = await fetch('http://localhost:3007/cursos', {
+      const res = await fetch('http://18.222.195.94:3007/cursos', {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();

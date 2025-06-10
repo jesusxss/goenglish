@@ -22,8 +22,8 @@ const CalificacionesList = ({ calificaciones, usuarios, clases, token, fetchCali
     setLoading(true);
     try {
       const url = editMode 
-        ? `http://localhost:3004/calificaciones/${formData.id}`
-        : 'http://localhost:3004/calificaciones';
+        ? `http://18.222.195.94:3004/calificaciones/${formData.id}`
+        : 'http://18.222.195.94:3004/calificaciones';
       
       const method = editMode ? 'PUT' : 'POST';
       
@@ -59,7 +59,7 @@ const CalificacionesList = ({ calificaciones, usuarios, clases, token, fetchCali
     if (!window.confirm('¿Estás seguro de eliminar esta calificación?')) return;
     
     try {
-      const res = await fetch(`http://localhost:3004/calificaciones/${id}`, {
+      const res = await fetch(`http://18.222.195.94:3004/calificaciones/${id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });
