@@ -12,7 +12,7 @@ const SECRET_KEY = 'tu_clave_super_secreta';
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: '',
+  password: '123456',
   database: 'instenglish_attendance',
   port: 3306,
 });

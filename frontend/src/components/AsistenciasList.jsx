@@ -7,10 +7,20 @@ const AsistenciasList = ({ asistencias, usuarios, clases, token, fetchAsistencia
   const [formData, setFormData] = useState({ 
     estudiante_id: '', 
     materia_id: '', 
-    estado: 'presente' 
+    estado: 'presente',
+    fecha: ''
   });
   const [editMode, setEditMode] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  // Convierte ISO string a formato local para input datetime-local
+  const toLocalDateTime = (dateStr) => {
+    if (!dateStr) return '';
+    const dt = new Date(dateStr);
+    // Ajuste para que datetime-local acepte formato 'YYYY-MM-DDTHH:mm'
+    const iso = dt.toISOString();
+    return iso.slice(0, 16);
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -27,17 +37,21 @@ const AsistenciasList = ({ asistencias, usuarios, clases, token, fetchAsistencia
       
       const method = editMode ? 'PUT' : 'POST';
       
+      // Si fecha está vacía, no la mandamos para que MySQL ponga CURRENT_TIMESTAMP
+      const bodyData = {
+        estudiante_id: formData.estudiante_id,
+        materia_id: formData.materia_id,
+        estado: formData.estado,
+      };
+      if (formData.fecha) bodyData.fecha = formData.fecha;
+
       const res = await fetch(url, {
         method,
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify({
-          estudiante_id: formData.estudiante_id,
-          materia_id: formData.materia_id,
-          estado: formData.estado
-        })
+        body: JSON.stringify(bodyData)
       });
       
       if (!res.ok) {
@@ -78,7 +92,8 @@ const AsistenciasList = ({ asistencias, usuarios, clases, token, fetchAsistencia
       id: asistencia.id,
       estudiante_id: asistencia.estudiante_id,
       materia_id: asistencia.materia_id,
-      estado: asistencia.estado
+      estado: asistencia.estado,
+      fecha: toLocalDateTime(asistencia.fecha)
     });
     setEditMode(true);
     setShowModal(true);
@@ -88,7 +103,8 @@ const AsistenciasList = ({ asistencias, usuarios, clases, token, fetchAsistencia
     setFormData({ 
       estudiante_id: '', 
       materia_id: '', 
-      estado: 'presente' 
+      estado: 'presente',
+      fecha: ''
     });
     setEditMode(false);
     setShowModal(true);
@@ -120,6 +136,7 @@ const AsistenciasList = ({ asistencias, usuarios, clases, token, fetchAsistencia
             <th>Estudiante</th>
             <th>Clase</th>
             <th>Estado</th>
+            <th>Fecha y Hora</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -130,6 +147,7 @@ const AsistenciasList = ({ asistencias, usuarios, clases, token, fetchAsistencia
               <td>{getUsuarioNombre(asistencia.estudiante_id)}</td>
               <td>{getClaseNombre(asistencia.materia_id)}</td>
               <td>{asistencia.estado}</td>
+              <td>{asistencia.fecha ? new Date(asistencia.fecha).toLocaleString() : ''}</td>
               <td>
                 <Button variant="warning" size="sm" className="me-2" onClick={() => handleEdit(asistencia)}>
                   <FaEdit />
@@ -190,6 +208,17 @@ const AsistenciasList = ({ asistencias, usuarios, clases, token, fetchAsistencia
                 <option value="justificado">Justificado</option>
                 <option value="tardanza">Tardanza</option>
               </Form.Select>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Fecha y Hora</Form.Label>
+              <Form.Control
+                type="datetime-local"
+                name="fecha"
+                value={formData.fecha}
+                onChange={handleInputChange}
+                placeholder="Seleccione fecha y hora"
+                // no es obligatorio si quieres dejar que el backend ponga la fecha actual
+              />
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
