@@ -90,7 +90,11 @@ function App() {
     if (!token) return;
     
     try {
+<<<<<<< HEAD
       const res = await fetch('http://3.15.145.16:3002/usuarios', {
+=======
+      const res = await fetch('http://18.222.195.94:3002/usuarios', {
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
         headers: { 
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -115,7 +119,11 @@ function App() {
     if (!token) return;
     
     try {
+<<<<<<< HEAD
       const res = await fetch('http://3.15.145.16:3005/materias', {
+=======
+      const res = await fetch('http://18.222.195.94:3005/materias', {
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
         headers: { 
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -140,7 +148,11 @@ function App() {
     if (!token) return;
     
     try {
+<<<<<<< HEAD
       const res = await fetch('http://3.15.145.16:3003/asistencias', {
+=======
+      const res = await fetch('http://18.222.195.94:3003/asistencias', {
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
         headers: { 
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -165,7 +177,11 @@ function App() {
     if (!token) return;
     
     try {
+<<<<<<< HEAD
       const res = await fetch('http://3.15.145.16:3007/asignaciones', {
+=======
+      const res = await fetch('http://18.222.195.94:3007/asignaciones', {
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
         headers: { 
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -193,7 +209,11 @@ function App() {
     setErrorAsignacionesDocente('');
     
     try {
+<<<<<<< HEAD
       const response = await fetch('http://3.15.145.16:3007/asignaciones', {
+=======
+      const response = await fetch('http://18.222.195.94:3007/asignaciones', {
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -227,7 +247,11 @@ function App() {
     if (!token) return;
     
     try {
+<<<<<<< HEAD
       const res = await fetch('http://3.15.145.16:3004/calificaciones', {
+=======
+      const res = await fetch('http://18.222.195.94:3004/calificaciones', {
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
         headers: { 
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -252,7 +276,11 @@ function App() {
   const fetchEstudiantes = useCallback(async () => {
     if (!token) return;
     try {
+<<<<<<< HEAD
       const res = await fetch('http://3.15.145.16:3002/usuarios', {
+=======
+      const res = await fetch('http://18.222.195.94:3002/usuarios', {
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
         headers: { 
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -275,7 +303,11 @@ function App() {
   const fetchCursosConProfesor = useCallback(async () => {
     if (!token) return;
     try {
+<<<<<<< HEAD
       const res = await fetch('http://3.15.145.16:3007/asignaciones', {
+=======
+      const res = await fetch('http://18.222.195.94:3007/asignaciones', {
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
         headers: { 
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -321,7 +353,11 @@ function App() {
   // Fetch cursos con profesor, capacidad y cupos disponibles desde el nuevo backend
   const fetchCursosConProfesorNuevo = useCallback(async () => {
     try {
+<<<<<<< HEAD
       const res = await fetch('http://3.15.145.16:3007/cursos-con-profesor', {
+=======
+      const res = await fetch('http://18.222.195.94:3007/cursos-con-profesor', {
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
         headers: {
           'Content-Type': 'application/json'
         }
@@ -439,7 +475,11 @@ function App() {
     setLoading(true);
 
     try {
+<<<<<<< HEAD
       const res = await fetch('http://3.15.145.16:3001/login', {
+=======
+      const res = await fetch('http://18.222.195.94:3001/login', {
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',

@@ -5,7 +5,11 @@ const jwt = require('jsonwebtoken');
 
 const app = express();
 app.use(cors({
+<<<<<<< HEAD
   origin: 'http://3.15.145.16:3000',
+=======
+  origin: 'http://18.222.195.94:3000',
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
   methods: ['GET','POST','PUT','DELETE'],
   allowedHeaders: ['Content-Type','Authorization'],
   credentials: true
@@ -15,9 +19,15 @@ app.use(express.json());
 const SECRET_KEY = 'tu_clave_super_secreta';
 
 const connection = mysql.createConnection({
+<<<<<<< HEAD
   host: 'instenglish-auth.c50qcacwip4o.us-east-2.rds.amazonaws.com',
   user: 'admin',
   password: 'GgAnth17',
+=======
+  host: 'instenglish-asignation.c50qcacwip4o.us-east-2.rds.amazonaws.com',
+  user: 'admingoenglishpe',
+  password: 'Ewb-A4Q-KY2-emz',
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
   database: 'instenglish_asignation',
   port: 3306,
 });
@@ -177,4 +187,8 @@ app.use((req, res, next) => {
   next();
 });
 
+<<<<<<< HEAD
 app.listen(3008, () => console.log('API de Asignaciones con JWT corriendo en http://3.15.145.16:3008'));
+=======
+app.listen(3008, () => console.log('API de Asignaciones con JWT corriendo en http://18.222.195.94:3008'));
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde

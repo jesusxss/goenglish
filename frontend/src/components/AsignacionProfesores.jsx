@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+<<<<<<< HEAD
 import { 
   FaCalendarAlt, 
   FaTrash, 
@@ -17,6 +18,9 @@ import {
   FaExclamationTriangle,
   FaUndo 
 } from 'react-icons/fa';
+=======
+import { FaCalendarAlt, FaTrash, FaEdit, FaPlus, FaSave, FaTimes, FaUser, FaBook, FaClock, FaMapMarkerAlt, FaUsers } from 'react-icons/fa';
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
 
 const diasSemana = [
   'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'
@@ -163,12 +167,20 @@ const AsignacionProfesores = ({
         maxAlumnos: parseInt(form.maxAlumnos)
       };
 
+<<<<<<< HEAD
       let url = 'http://3.15.145.16:3007/asignaciones';
+=======
+      let url = 'http://18.222.195.94:3007/asignaciones';
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
       let method = 'POST';
       
       // Si estamos editando, usar PUT y agregar el ID
       if (editIndex !== null && editId) {
+<<<<<<< HEAD
         url = `http://3.15.145.16:3007/asignaciones/${editId}`;
+=======
+        url = `http://18.222.195.94:3007/asignaciones/${editId}`;
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
         method = 'PUT';
       }
 
@@ -268,7 +280,11 @@ const AsignacionProfesores = ({
     setMensaje('');
     
     try {
+<<<<<<< HEAD
       const res = await fetch(`http://3.15.145.16:3006/asignaciones/${asignacion.id}`, { 
+=======
+      const res = await fetch(`http://18.222.195.94:3006/asignaciones/${asignacion.id}`, { 
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
         method: 'DELETE',
         headers: {
           'Authorization': token ? `Bearer ${token}` : ''
@@ -324,6 +340,7 @@ const AsignacionProfesores = ({
 
   // Componente para mostrar la última asignación con diseño más integrado
   const UltimaAsignacionCard = ({ registro, onClose }) => (
+<<<<<<< HEAD
     <div className="mt-4 bg-white border rounded-3 shadow-sm overflow-hidden">
       <div className="bg-success bg-gradient bg-opacity-10 p-3 border-bottom">
         <div className="d-flex justify-content-between align-items-center">
@@ -419,6 +436,61 @@ const AsignacionProfesores = ({
             </div>
           )}
         </div>
+=======
+    <div className="mt-4 p-3 bg-light border-start border-success border-4 rounded">
+      <div className="d-flex justify-content-between align-items-start mb-2">
+        <div className="d-flex align-items-center">
+          <div className="bg-success text-white rounded-circle p-2 me-2" style={{width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+            <FaCalendarAlt size={14} />
+          </div>
+          <span className="fw-bold text-success small">ASIGNACIÓN REGISTRADA</span>
+        </div>
+        <button className="btn btn-sm btn-outline-secondary border-0" onClick={onClose} title="Cerrar">
+          <FaTimes size={12} />
+        </button>
+      </div>
+      
+      <div className="row g-2">
+        <div className="col-md-6">
+          <div className="d-flex align-items-center mb-1">
+            <FaUser className="text-primary me-2" size={14} />
+            <small className="fw-bold">{registro.profesor_nombre}</small>
+          </div>
+        </div>
+        <div className="col-md-6">
+          <div className="d-flex align-items-center mb-1">
+            <FaBook className="text-info me-2" size={14} />
+            <small className="fw-bold">{registro.curso_nombre}</small>
+          </div>
+        </div>
+        <div className="col-md-4">
+          <div className="d-flex align-items-center mb-1">
+            <FaClock className="text-warning me-2" size={14} />
+            <small>{registro.diaSemana || registro.dia} • {registro.horaInicio}-{registro.horaFin}</small>
+          </div>
+        </div>
+        <div className="col-md-4">
+          {registro.aula && (
+            <div className="d-flex align-items-center mb-1">
+              <FaMapMarkerAlt className="text-danger me-2" size={14} />
+              <small>{registro.aula}</small>
+            </div>
+          )}
+        </div>
+        <div className="col-md-4">
+          <div className="d-flex align-items-center mb-1">
+            <FaUsers className="text-secondary me-2" size={14} />
+            <small>Máx. {registro.maxAlumnos}</small>
+          </div>
+        </div>
+      </div>
+      
+      <div className="mt-2 pt-2 border-top">
+        <small className="text-muted">
+          Período: {registro.fechaInicio} al {registro.fechaFin}
+          {registro.notas && ` • ${registro.notas}`}
+        </small>
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
       </div>
     </div>
   );
@@ -431,6 +503,7 @@ const AsignacionProfesores = ({
   }, [asignaciones]);
 
   return (
+<<<<<<< HEAD
     <div className="container-fluid p-0">
       <div className="card shadow-sm border-0 mb-4">
         <div className="card-header bg-primary bg-gradient text-white py-3">
@@ -681,10 +754,190 @@ const AsignacionProfesores = ({
             <div className="d-flex gap-2 justify-content-end border-top pt-4 mt-2">
               <button type="button" className="btn btn-outline-secondary" onClick={handleReset} disabled={loading}>
                 <FaTimes className="me-1" size={14} />
+=======
+    <div className="p-0">
+      {/* Header más simple y integrado */}
+      <div className="d-flex align-items-center mb-3">
+        <div className="bg-primary text-white rounded p-2 me-3" style={{width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <FaCalendarAlt size={18} />
+        </div>
+        <div>
+          <h5 className="mb-0">
+            {editIndex !== null ? 'Editar Asignación' : 'Nueva Asignación'}
+          </h5>
+          <small className="text-muted">Gestión de horarios y profesores</small>
+        </div>
+      </div>
+
+      {/* Mensaje de estado más discreto */}
+      {mensaje && (
+        <div className={`alert ${mensaje.includes('exitosamente') ? 'alert-success' : 'alert-danger'} alert-dismissible fade show border-0 shadow-sm`} style={{fontSize: '0.9rem'}}>
+          {mensaje}
+          <button 
+            type="button" 
+            className="btn-close" 
+            onClick={() => setMensaje('')}
+            aria-label="Close"
+          ></button>
+        </div>
+      )}
+
+      {/* Formulario en card más simple */}
+      <div className="bg-white rounded border shadow-sm p-3 mb-3">
+        <form onSubmit={handleSubmit} className="row g-3">
+          <div className="col-md-6">
+            <label className="form-label fw-semibold small">Profesor *</label>
+            <select
+              className={`form-select form-select-sm ${errores.profesor ? 'is-invalid' : ''}`}
+              name="profesor"
+              value={form.profesor}
+              onChange={handleChange}
+              disabled={loading}
+            >
+              <option value="">Seleccione un profesor...</option>
+              {profesores.map((p) => (
+                <option key={p.id} value={p.id}>{p.nombre}</option>
+              ))}
+            </select>
+            {errores.profesor && <div className="invalid-feedback small">{errores.profesor}</div>}
+          </div>
+          
+          <div className="col-md-6">
+            <label className="form-label fw-semibold small">Curso/Materia *</label>
+            <select
+              className={`form-select form-select-sm ${errores.curso ? 'is-invalid' : ''}`}
+              name="curso"
+              value={form.curso}
+              onChange={handleChange}
+              disabled={loading}
+            >
+              <option value="">Seleccione un curso...</option>
+              {cursos.map((c) => (
+                <option key={c.id} value={c.id}>{c.nombre}</option>
+              ))}
+            </select>
+            {errores.curso && <div className="invalid-feedback small">{errores.curso}</div>}
+          </div>
+          
+          <div className="col-md-4">
+            <label className="form-label fw-semibold small">Día *</label>
+            <select 
+              className={`form-select form-select-sm ${errores.dia ? 'is-invalid' : ''}`}
+              name="dia" 
+              value={form.dia} 
+              onChange={handleChange}
+              disabled={loading}
+            >
+              <option value="">Seleccione...</option>
+              {diasSemana.map(d => <option key={d} value={d}>{d}</option>)}
+            </select>
+            {errores.dia && <div className="invalid-feedback small">{errores.dia}</div>}
+          </div>
+          
+          <div className="col-md-4">
+            <label className="form-label fw-semibold small">Hora Inicio *</label>
+            <input 
+              type="time" 
+              className={`form-control form-control-sm ${errores.horaInicio ? 'is-invalid' : ''}`}
+              name="horaInicio" 
+              value={form.horaInicio} 
+              onChange={handleChange}
+              disabled={loading}
+            />
+            {errores.horaInicio && <div className="invalid-feedback small">{errores.horaInicio}</div>}
+          </div>
+          
+          <div className="col-md-4">
+            <label className="form-label fw-semibold small">Hora Fin *</label>
+            <input 
+              type="time" 
+              className={`form-control form-control-sm ${errores.horaFin ? 'is-invalid' : ''}`}
+              name="horaFin" 
+              value={form.horaFin} 
+              onChange={handleChange}
+              disabled={loading}
+            />
+            {errores.horaFin && <div className="invalid-feedback small">{errores.horaFin}</div>}
+          </div>
+          
+          <div className="col-md-6">
+            <label className="form-label fw-semibold small">Fecha Inicio *</label>
+            <input 
+              type="date" 
+              className={`form-control form-control-sm ${errores.fechaInicio ? 'is-invalid' : ''}`}
+              name="fechaInicio" 
+              value={form.fechaInicio} 
+              onChange={handleChange}
+              disabled={loading}
+            />
+            {errores.fechaInicio && <div className="invalid-feedback small">{errores.fechaInicio}</div>}
+          </div>
+          
+          <div className="col-md-6">
+            <label className="form-label fw-semibold small">Fecha Fin *</label>
+            <input 
+              type="date" 
+              className={`form-control form-control-sm ${errores.fechaFin ? 'is-invalid' : ''}`}
+              name="fechaFin" 
+              value={form.fechaFin} 
+              onChange={handleChange}
+              disabled={loading}
+            />
+            {errores.fechaFin && <div className="invalid-feedback small">{errores.fechaFin}</div>}
+          </div>
+          
+          <div className="col-md-4">
+            <label className="form-label fw-semibold small">Aula</label>
+            <input 
+              type="text" 
+              className="form-control form-control-sm"
+              name="aula" 
+              value={form.aula} 
+              onChange={handleChange}
+              placeholder="Ej: Aula 101"
+              disabled={loading}
+            />
+          </div>
+          
+          <div className="col-md-4">
+            <label className="form-label fw-semibold small">Máx. Alumnos *</label>
+            <input
+              type="number"
+              min="1"
+              max="100"
+              className={`form-control form-control-sm ${errores.maxAlumnos ? 'is-invalid' : ''}`}
+              name="maxAlumnos"
+              value={form.maxAlumnos}
+              onChange={handleChange}
+              placeholder="30"
+              disabled={loading}
+            />
+            {errores.maxAlumnos && <div className="invalid-feedback small">{errores.maxAlumnos}</div>}
+          </div>
+          
+          <div className="col-md-4">
+            <label className="form-label fw-semibold small">Notas</label>
+            <input 
+              type="text" 
+              className="form-control form-control-sm"
+              name="notas" 
+              value={form.notas} 
+              onChange={handleChange}
+              placeholder="Opcional"
+              disabled={loading}
+            />
+          </div>
+          
+          {/* Botones más compactos */}
+          <div className="col-12 pt-2">
+            <div className="d-flex gap-2 justify-content-end">
+              <button type="button" className="btn btn-outline-secondary btn-sm" onClick={handleReset} disabled={loading}>
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
                 Limpiar
               </button>
               
               {editIndex !== null && (
+<<<<<<< HEAD
                 <button type="button" className="btn btn-warning" onClick={cancelEdit} disabled={loading}>
                   <FaUndo className="me-1" size={14} />
                   Cancelar Edición
@@ -695,16 +948,34 @@ const AsignacionProfesores = ({
                 {loading ? (
                   <>
                     <span className="spinner-border spinner-border-sm me-2" role="status"></span>
+=======
+                <button type="button" className="btn btn-warning btn-sm" onClick={cancelEdit} disabled={loading}>
+                  <FaTimes className="me-1" size={12} />
+                  Cancelar
+                </button>
+              )}
+              
+              <button type="submit" className="btn btn-primary btn-sm" disabled={loading}>
+                {loading ? (
+                  <>
+                    <span className="spinner-border spinner-border-sm me-2" role="status" style={{width: '12px', height: '12px'}}></span>
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
                     Procesando...
                   </>
                 ) : (
                   <>
+<<<<<<< HEAD
                     {editIndex !== null ? <FaSave className="me-1" size={14} /> : <FaPlus className="me-1" size={14} />}
                     {editIndex !== null ? 'Actualizar Asignación' : 'Crear Asignación'}
+=======
+                    {editIndex !== null ? <FaSave className="me-1" size={12} /> : <FaPlus className="me-1" size={12} />}
+                    {editIndex !== null ? 'Actualizar' : 'Guardar'}
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
                   </>
                 )}
               </button>
             </div>
+<<<<<<< HEAD
           </form>
           
           {ultimoRegistro && (
@@ -716,6 +987,18 @@ const AsignacionProfesores = ({
             </div>
           )}
         </div>
+=======
+          </div>
+        </form>
+
+        {/* Mostrar la última asignación de forma más integrada */}
+        {ultimoRegistro && (
+          <UltimaAsignacionCard
+            registro={ultimoRegistro}
+            onClose={() => setUltimoRegistro(null)}
+          />
+        )}
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
       </div>
     </div>
   );

@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import { FaEdit, FaTrash, FaPlus, FaSearch, FaFilter, FaUserGraduate, FaBookOpen, FaCalendarAlt, FaCheck, FaTimes, FaClipboardCheck, FaClock, FaEye, FaDownload } from 'react-icons/fa';
+=======
+import { Button, Table, Modal, Form } from 'react-bootstrap';
+import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
 
 const AsistenciasList = ({ asistencias, usuarios, clases, token, fetchAsistencias, showError, showSuccess }) => {
   const [showModal, setShowModal] = useState(false);
@@ -11,15 +16,22 @@ const AsistenciasList = ({ asistencias, usuarios, clases, token, fetchAsistencia
   });
   const [editMode, setEditMode] = useState(false);
   const [loading, setLoading] = useState(false);
+<<<<<<< HEAD
   const [searchTerm, setSearchTerm] = useState('');
   const [filterEstado, setFilterEstado] = useState('');
   const [sortBy, setSortBy] = useState('fecha');
   const [sortOrder, setSortOrder] = useState('desc');
+=======
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
 
   // Convierte ISO string a formato local para input datetime-local
   const toLocalDateTime = (dateStr) => {
     if (!dateStr) return '';
     const dt = new Date(dateStr);
+<<<<<<< HEAD
+=======
+    // Ajuste para que datetime-local acepte formato 'YYYY-MM-DDTHH:mm'
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
     const iso = dt.toISOString();
     return iso.slice(0, 16);
   };
@@ -34,11 +46,20 @@ const AsistenciasList = ({ asistencias, usuarios, clases, token, fetchAsistencia
     setLoading(true);
     try {
       const url = editMode 
+<<<<<<< HEAD
         ? `http://3.15.145.16:3003/asistencias/${formData.id}`
         : 'http://3.15.145.16:3003/asistencias';
       
       const method = editMode ? 'PUT' : 'POST';
       
+=======
+        ? `http://18.222.195.94:3003/asistencias/${formData.id}`
+        : 'http://18.222.195.94:3003/asistencias';
+      
+      const method = editMode ? 'PUT' : 'POST';
+      
+      // Si fecha está vacía, no la mandamos para que MySQL ponga CURRENT_TIMESTAMP
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
       const bodyData = {
         estudiante_id: formData.estudiante_id,
         materia_id: formData.materia_id,
@@ -74,7 +95,11 @@ const AsistenciasList = ({ asistencias, usuarios, clases, token, fetchAsistencia
     if (!window.confirm('¿Estás seguro de eliminar esta asistencia?')) return;
     
     try {
+<<<<<<< HEAD
       const res = await fetch(`http://3.15.145.16:3003/asistencias/${id}`, {
+=======
+      const res = await fetch(`http://18.222.195.94:3003/asistencias/${id}`, {
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -121,6 +146,7 @@ const AsistenciasList = ({ asistencias, usuarios, clases, token, fetchAsistencia
     return clase ? clase.nombre : 'Desconocida';
   };
 
+<<<<<<< HEAD
   const getEstadoConfig = (estado) => {
     const configs = {
       presente: { color: '#10b981', bg: '#f0fdf4', icon: FaCheck, label: 'Presente' },
@@ -986,6 +1012,120 @@ const AsistenciasList = ({ asistencias, usuarios, clases, token, fetchAsistencia
         )}
       </div>
     </>
+=======
+  return (
+    <div>
+      <div className="d-flex justify-content-between mb-4">
+        <h2>Gestión de Asistencias</h2>
+        <Button variant="primary" onClick={handleAdd}>
+          <FaPlus className="me-2" /> Nueva Asistencia
+        </Button>
+      </div>
+
+      <Table striped bordered hover responsive>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Estudiante</th>
+            <th>Clase</th>
+            <th>Estado</th>
+            <th>Fecha y Hora</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {asistencias.map(asistencia => (
+            <tr key={asistencia.id}>
+              <td>{asistencia.id}</td>
+              <td>{getUsuarioNombre(asistencia.estudiante_id)}</td>
+              <td>{getClaseNombre(asistencia.materia_id)}</td>
+              <td>{asistencia.estado}</td>
+              <td>{asistencia.fecha ? new Date(asistencia.fecha).toLocaleString() : ''}</td>
+              <td>
+                <Button variant="warning" size="sm" className="me-2" onClick={() => handleEdit(asistencia)}>
+                  <FaEdit />
+                </Button>
+                <Button variant="danger" size="sm" onClick={() => handleDelete(asistencia.id)}>
+                  <FaTrash />
+                </Button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>{editMode ? 'Editar Asistencia' : 'Nueva Asistencia'}</Modal.Title>
+        </Modal.Header>
+        <Form onSubmit={handleSubmit}>
+          <Modal.Body>
+            <Form.Group className="mb-3">
+              <Form.Label>Estudiante</Form.Label>
+              <Form.Select
+                name="estudiante_id"
+                value={formData.estudiante_id}
+                onChange={handleInputChange}
+                required
+              >
+                <option value="">Seleccionar estudiante</option>
+                {usuarios.filter(u => u.rol === 'estudiante').map(usuario => (
+                  <option key={usuario.id} value={usuario.id}>{usuario.nombre}</option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Clase</Form.Label>
+              <Form.Select
+                name="materia_id"
+                value={formData.materia_id}
+                onChange={handleInputChange}
+                required
+              >
+                <option value="">Seleccionar clase</option>
+                {clases.map(clase => (
+                  <option key={clase.id} value={clase.id}>{clase.nombre}</option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Estado</Form.Label>
+              <Form.Select
+                name="estado"
+                value={formData.estado}
+                onChange={handleInputChange}
+                required
+              >
+                <option value="presente">Presente</option>
+                <option value="ausente">Ausente</option>
+                <option value="justificado">Justificado</option>
+                <option value="tardanza">Tardanza</option>
+              </Form.Select>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Fecha y Hora</Form.Label>
+              <Form.Control
+                type="datetime-local"
+                name="fecha"
+                value={formData.fecha}
+                onChange={handleInputChange}
+                placeholder="Seleccione fecha y hora"
+                // no es obligatorio si quieres dejar que el backend ponga la fecha actual
+              />
+            </Form.Group>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={() => setShowModal(false)}>
+              Cancelar
+            </Button>
+            <Button variant="primary" type="submit" disabled={loading}>
+              {loading ? 'Guardando...' : 'Guardar'}
+            </Button>
+          </Modal.Footer>
+        </Form>
+      </Modal>
+    </div>
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
   );
 };
 

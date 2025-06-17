@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import { FaEdit, FaTrash, FaPlus, FaStar, FaUser, FaBook, FaTrophy, FaGraduationCap } from 'react-icons/fa';
 import { Modal, Button, Form, Card, Container, Row, Col, Badge, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+=======
+import { Button, Table, Modal, Form } from 'react-bootstrap';
+import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
 
 const CalificacionesList = ({ calificaciones, usuarios, clases, token, fetchCalificaciones, showError, showSuccess }) => {
   const [showModal, setShowModal] = useState(false);
@@ -23,8 +28,13 @@ const CalificacionesList = ({ calificaciones, usuarios, clases, token, fetchCali
     setLoading(true);
     try {
       const url = editMode 
+<<<<<<< HEAD
         ? `http://3.15.145.16:3004/calificaciones/${formData.id}`
         : 'http://3.15.145.16:3004/calificaciones';
+=======
+        ? `http://18.222.195.94:3004/calificaciones/${formData.id}`
+        : 'http://18.222.195.94:3004/calificaciones';
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
       
       const method = editMode ? 'PUT' : 'POST';
       
@@ -60,7 +70,11 @@ const CalificacionesList = ({ calificaciones, usuarios, clases, token, fetchCali
     if (!window.confirm('¿Estás seguro de eliminar esta calificación?')) return;
     
     try {
+<<<<<<< HEAD
       const res = await fetch(`http://3.15.145.16:3004/calificaciones/${id}`, {
+=======
+      const res = await fetch(`http://18.222.195.94:3004/calificaciones/${id}`, {
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -105,6 +119,7 @@ const CalificacionesList = ({ calificaciones, usuarios, clases, token, fetchCali
     return clase ? clase.nombre : 'Desconocida';
   };
 
+<<<<<<< HEAD
   const getGradeBadgeVariant = (grade) => {
     if (grade >= 90) return 'success';
     if (grade >= 80) return 'warning';
@@ -330,12 +345,64 @@ const CalificacionesList = ({ calificaciones, usuarios, clases, token, fetchCali
                 <FaUser className="me-2 text-primary" />
                 Estudiante
               </Form.Label>
+=======
+  return (
+    <div>
+      <div className="d-flex justify-content-between mb-4">
+        <h2>Gestión de Calificaciones</h2>
+        <Button variant="primary" onClick={handleAdd}>
+          <FaPlus className="me-2" /> Nueva Calificación
+        </Button>
+      </div>
+
+      <Table striped bordered hover responsive>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Estudiante</th>
+            <th>Clase</th>
+            <th>Calificación</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {calificaciones.map(calificacion => (
+            <tr key={calificacion.id}>
+              <td>{calificacion.id}</td>
+              <td>{getUsuarioNombre(calificacion.estudiante_id)}</td>
+              <td>{getClaseNombre(calificacion.materia_id)}</td>
+              <td>{calificacion.calificacion}</td>
+              <td>
+                <Button variant="warning" size="sm" className="me-2" onClick={() => handleEdit(calificacion)}>
+                  <FaEdit />
+                </Button>
+                <Button variant="danger" size="sm" onClick={() => handleDelete(calificacion.id)}>
+                  <FaTrash />
+                </Button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>{editMode ? 'Editar Calificación' : 'Nueva Calificación'}</Modal.Title>
+        </Modal.Header>
+        <Form onSubmit={handleSubmit}>
+          <Modal.Body>
+            <Form.Group className="mb-3">
+              <Form.Label>Estudiante</Form.Label>
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
               <Form.Select
                 name="estudiante_id"
                 value={formData.estudiante_id}
                 onChange={handleInputChange}
                 required
+<<<<<<< HEAD
                 className="form-control-lg"
+=======
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
               >
                 <option value="">Seleccionar estudiante</option>
                 {usuarios.filter(u => u.rol === 'estudiante').map(usuario => (
@@ -343,18 +410,26 @@ const CalificacionesList = ({ calificaciones, usuarios, clases, token, fetchCali
                 ))}
               </Form.Select>
             </Form.Group>
+<<<<<<< HEAD
             
             <Form.Group className="mb-3">
               <Form.Label className="fw-semibold">
                 <FaBook className="me-2 text-info" />
                 Clase
               </Form.Label>
+=======
+            <Form.Group className="mb-3">
+              <Form.Label>Clase</Form.Label>
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
               <Form.Select
                 name="materia_id"
                 value={formData.materia_id}
                 onChange={handleInputChange}
                 required
+<<<<<<< HEAD
                 className="form-control-lg"
+=======
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
               >
                 <option value="">Seleccionar clase</option>
                 {clases.map(clase => (
@@ -362,12 +437,17 @@ const CalificacionesList = ({ calificaciones, usuarios, clases, token, fetchCali
                 ))}
               </Form.Select>
             </Form.Group>
+<<<<<<< HEAD
             
             <Form.Group className="mb-4">
               <Form.Label className="fw-semibold">
                 <FaStar className="me-2 text-warning" />
                 Calificación
               </Form.Label>
+=======
+            <Form.Group className="mb-3">
+              <Form.Label>Calificación</Form.Label>
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
               <Form.Control
                 type="number"
                 min="0"
@@ -377,6 +457,7 @@ const CalificacionesList = ({ calificaciones, usuarios, clases, token, fetchCali
                 value={formData.calificacion}
                 onChange={handleInputChange}
                 required
+<<<<<<< HEAD
                 className="form-control-lg"
                 placeholder="Ingresa la calificación (0-100)"
               />
@@ -414,6 +495,22 @@ const CalificacionesList = ({ calificaciones, usuarios, clases, token, fetchCali
         </Modal.Body>
       </Modal>
     </Container>
+=======
+              />
+            </Form.Group>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={() => setShowModal(false)}>
+              Cancelar
+            </Button>
+            <Button variant="primary" type="submit" disabled={loading}>
+              {loading ? 'Guardando...' : 'Guardar'}
+            </Button>
+          </Modal.Footer>
+        </Form>
+      </Modal>
+    </div>
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
   );
 };
 

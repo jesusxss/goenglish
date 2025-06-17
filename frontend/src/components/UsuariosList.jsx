@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import { Button, Modal, Form, Card, Container, Row, Col, Badge } from 'react-bootstrap';
 import { FaEdit, FaTrash, FaPlus, FaUser, FaEnvelope, FaUserTag, FaUserGraduate } from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.min.css';
+=======
+import { Button, Table, Modal, Form } from 'react-bootstrap';
+import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
 
 const UsuariosList = ({ usuarios, token, fetchUsuarios, showError, showSuccess }) => {
   const [showModal, setShowModal] = useState(false);
@@ -19,8 +24,13 @@ const UsuariosList = ({ usuarios, token, fetchUsuarios, showError, showSuccess }
     setLoading(true);
     try {
       const url = editMode 
+<<<<<<< HEAD
         ? `http://3.15.145.16:3002/usuarios/${formData.id}`
         : 'http://3.15.145.16:3002/usuarios';
+=======
+        ? `http://18.222.195.94:3002/usuarios/${formData.id}`
+        : 'http://18.222.195.94:3002/usuarios';
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
       
       const method = editMode ? 'PUT' : 'POST';
       
@@ -53,7 +63,11 @@ const UsuariosList = ({ usuarios, token, fetchUsuarios, showError, showSuccess }
     if (!window.confirm('¿Estás seguro de eliminar este usuario?')) return;
     
     try {
+<<<<<<< HEAD
       const res = await fetch(`http://3.15.145.16:3002/usuarios/${id}`, {
+=======
+      const res = await fetch(`http://18.222.195.94:3002/usuarios/${id}`, {
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -85,6 +99,7 @@ const UsuariosList = ({ usuarios, token, fetchUsuarios, showError, showSuccess }
     setShowModal(true);
   };
 
+<<<<<<< HEAD
   const getRoleBadgeVariant = (role) => {
     switch (role) {
       case 'administrativo': return 'danger';
@@ -337,12 +352,62 @@ const UsuariosList = ({ usuarios, token, fetchUsuarios, showError, showSuccess }
                 <FaUser className="me-2 text-primary" />
                 Nombre Completo
               </Form.Label>
+=======
+  return (
+    <div>
+      <div className="d-flex justify-content-between mb-4">
+        <h2>Gestión de Usuarios</h2>
+        <Button variant="primary" onClick={handleAdd}>
+          <FaPlus className="me-2" /> Nuevo Usuario
+        </Button>
+      </div>
+
+      <Table striped bordered hover responsive>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Rol</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {usuarios.map(usuario => (
+            <tr key={usuario.id}>
+              <td>{usuario.id}</td>
+              <td>{usuario.nombre}</td>
+              <td>{usuario.email}</td>
+              <td>{usuario.rol}</td>
+              <td>
+                <Button variant="warning" size="sm" className="me-2" onClick={() => handleEdit(usuario)}>
+                  <FaEdit />
+                </Button>
+                <Button variant="danger" size="sm" onClick={() => handleDelete(usuario.id)}>
+                  <FaTrash />
+                </Button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>{editMode ? 'Editar Usuario' : 'Nuevo Usuario'}</Modal.Title>
+        </Modal.Header>
+        <Form onSubmit={handleSubmit}>
+          <Modal.Body>
+            <Form.Group className="mb-3">
+              <Form.Label>Nombre</Form.Label>
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
               <Form.Control
                 type="text"
                 name="nombre"
                 value={formData.nombre}
                 onChange={handleInputChange}
                 required
+<<<<<<< HEAD
                 className="form-control-lg"
                 placeholder="Ej: Juan Pérez García"
               />
@@ -353,6 +418,12 @@ const UsuariosList = ({ usuarios, token, fetchUsuarios, showError, showSuccess }
                 <FaEnvelope className="me-2 text-info" />
                 Correo Electrónico
               </Form.Label>
+=======
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Email</Form.Label>
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
               <Form.Control
                 type="email"
                 name="email"
@@ -360,6 +431,7 @@ const UsuariosList = ({ usuarios, token, fetchUsuarios, showError, showSuccess }
                 onChange={handleInputChange}
                 required
                 disabled={editMode}
+<<<<<<< HEAD
                 className="form-control-lg"
                 placeholder="ejemplo@correo.com"
               />
@@ -392,12 +464,19 @@ const UsuariosList = ({ usuarios, token, fetchUsuarios, showError, showSuccess }
               <Form.Label className="fw-semibold">
                 Contraseña
               </Form.Label>
+=======
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Contraseña</Form.Label>
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
               <Form.Control
                 type="password"
                 name="password"
                 value={formData.password}
                 onChange={handleInputChange}
                 required={!editMode}
+<<<<<<< HEAD
                 className="form-control-lg"
                 placeholder={editMode ? "Nueva contraseña (opcional)" : "Contraseña segura"}
               />
@@ -441,6 +520,36 @@ const UsuariosList = ({ usuarios, token, fetchUsuarios, showError, showSuccess }
         </Modal.Body>
       </Modal>
     </Container>
+=======
+                placeholder={editMode ? "Dejar en blanco para no cambiar" : ""}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Rol</Form.Label>
+              <Form.Select
+                name="rol"
+                value={formData.rol}
+                onChange={handleInputChange}
+                required
+              >
+                <option value="estudiante">Estudiante</option>
+                <option value="profesor">Profesor</option>
+                <option value="administrativo">Administrador</option>
+              </Form.Select>
+            </Form.Group>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={() => setShowModal(false)}>
+              Cancelar
+            </Button>
+            <Button variant="primary" type="submit" disabled={loading}>
+              {loading ? 'Guardando...' : 'Guardar'}
+            </Button>
+          </Modal.Footer>
+        </Form>
+      </Modal>
+    </div>
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
   );
 };
 

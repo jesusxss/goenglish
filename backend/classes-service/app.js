@@ -10,10 +10,17 @@ app.use(express.json());
 const SECRET_KEY = 'tu_clave_super_secreta';
 
 const connection = mysql.createConnection({
+<<<<<<< HEAD
   host: 'instenglish-auth.c50qcacwip4o.us-east-2.rds.amazonaws.com',
   user: 'admin',
   password: 'GgAnth17',
   database: 'instenglish_classes',
+=======
+  host: 'instenglish-classes.c50qcacwip4o.us-east-2.rds.amazonaws.com',
+  user: 'admingoenglishpe',
+  password: 'Ewb-A4Q-KY2-emz',
+  database: 'instenglish-classes',
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
   port: 3306,
 });
 
@@ -91,4 +98,8 @@ app.delete('/materias/:id', authMiddleware(['administrativo']), (req, res) => {
   });
 });
 
+<<<<<<< HEAD
 app.listen(3005, () => console.log('Classes Service running on http://3.15.145.16:3005'));
+=======
+app.listen(3005, () => console.log('Classes Service running on http://18.222.195.94:3005'));
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde

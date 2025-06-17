@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+<<<<<<< HEAD
 import { FaUser, FaBookOpen, FaCheck, FaTimes, FaSave, FaPlus, FaUserGraduate, FaClipboardCheck } from 'react-icons/fa';
 
 function AsistenciaForm({ token, onSave, usuarios, clases, editingAsistencia, onCancel }) {
@@ -6,6 +7,11 @@ function AsistenciaForm({ token, onSave, usuarios, clases, editingAsistencia, on
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
+=======
+
+function AsistenciaForm({ token, onSave, usuarios, clases, editingAsistencia, onCancel }) {
+  const [form, setForm] = useState({ estudiante_id: '', materia_id: '', estado: '' });
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
 
   useEffect(() => {
     if (editingAsistencia) {
@@ -17,6 +23,7 @@ function AsistenciaForm({ token, onSave, usuarios, clases, editingAsistencia, on
     } else {
       setForm({ estudiante_id: '', materia_id: '', estado: '' });
     }
+<<<<<<< HEAD
     setErrors({});
     setTouched({});
   }, [editingAsistencia]);
@@ -559,6 +566,53 @@ function AsistenciaForm({ token, onSave, usuarios, clases, editingAsistencia, on
         </form>
       </div>
     </>
+=======
+  }, [editingAsistencia]);
+
+  function handleChange(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    onSave(form);
+  }
+
+  return (
+    <form onSubmit={handleSubmit} style={{ marginBottom: 20 }}>
+      <h3>{editingAsistencia ? 'Editar Asistencia' : 'Agregar Asistencia'}</h3>
+      <select name="estudiante_id" value={form.estudiante_id} onChange={handleChange} required style={{ width: '100%', marginBottom: 10, padding: 8 }}>
+        <option value="">Seleccionar Estudiante</option>
+        {usuarios.map(u => (
+          <option key={u.id} value={u.id}>{u.nombre} ({u.email})</option>
+        ))}
+      </select>
+
+      <select name="materia_id" value={form.materia_id} onChange={handleChange} required style={{ width: '100%', marginBottom: 10, padding: 8 }}>
+        <option value="">Seleccionar Clase</option>
+        {clases.map(c => (
+          <option key={c.id} value={c.id}>{c.nombre}</option>
+        ))}
+      </select>
+
+      <select name="estado" value={form.estado} onChange={handleChange} required style={{ width: '100%', marginBottom: 10, padding: 8 }}>
+        <option value="">Seleccionar Estado</option>
+        <option value="presente">Presente</option>
+        <option value="ausente">Ausente</option>
+        <option value="justificado">Justificado</option>
+      </select>
+
+      <button type="submit" style={{ width: '100%', padding: 10, marginBottom: 10 }}>
+        {editingAsistencia ? 'Guardar Cambios' : 'Agregar Asistencia'}
+      </button>
+
+      {editingAsistencia && (
+        <button type="button" onClick={onCancel} style={{ width: '100%', padding: 10, backgroundColor: '#ccc' }}>
+          Cancelar
+        </button>
+      )}
+    </form>
+>>>>>>> 1992e56078084cfec23482be0219a6497c145bde
   );
 }
 
